@@ -13,10 +13,10 @@ If you'd like to copy this do the following:
 
 Then of course just do:
 
-`
+```
 >npm install
 >npm run dev
-`
+```
 
 And your project will be running and working!
 Make any updates you please.

@@ -1,0 +1,16 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.app-container{
+  border: solid 2px rgb(193, 237, 255);
+  padding: 10rem;
+  border-radius: 25px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.356);
+  background-color: rgb(0, 24, 41);
+  display: flex;
+  flex-direction: column;
+}

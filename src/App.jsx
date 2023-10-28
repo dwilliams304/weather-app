@@ -3,17 +3,16 @@ import { LocationInput } from './components/locationinput'
 import { useState } from 'react'
 import axios from 'axios'
 import {URL, API_KEY} from './constants'
+import InitialData from './data/initialdata'
+import CitiesList from './data/cities';
 import './App.css'
 
-const initialInputValues = { /* eslint-disable-line */
-  location: '',
-
-}
 
 function App() {
   const [inputValue, setInputValue] = useState('');
-  const [weatherData, setWeatherData] = useState({});
+  const [weatherData, setWeatherData] = useState(InitialData);
   const [errorMessage, setErrorMessage] = useState('');
+  const [fahrenheit, setFahrenheit] = useState(false);
   
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -25,12 +24,20 @@ function App() {
     setInputValue('');
   }
 
-  const fetchData = () => {
-    axios.get(`${URL}key=${API_KEY}&q=${inputValue}`)  
-      .then(res => setWeatherData(res.data))
+  const randomCity = () => {
+    let random = Math.floor(Math.random() * CitiesList.length)
+    console.log(CitiesList[random]);
+    fetchData(CitiesList[random]);
+  }
+
+  const fetchData = (loc) => {
+    axios.get(`${URL}key=${API_KEY}&q=${!loc ? inputValue : loc}`)  
+      .then(res => {
+        setWeatherData(res.data)
+        setErrorMessage('');
+      })
       .catch(err => {
         setErrorMessage(err.response.data.error.message);
-        console.log(err);
       });
   }
 
@@ -38,11 +45,22 @@ function App() {
 
   return (
     <div className='app-container'>
-      <WeatherDisplay weatherData={weatherData}/>
+      <label> Fahrenheit?
+        <input 
+          onChange={() => setFahrenheit(!fahrenheit)}
+          value={fahrenheit}
+          type='checkbox'
+        />
+      </label>
+      <WeatherDisplay 
+        weatherData={weatherData}
+        isFahrenheit={fahrenheit}
+      />
       <LocationInput 
         handleChange={handleChange} 
         inputValue={inputValue} 
         handleSubmit={handleSubmit}
+        randomCity={randomCity}
       />
       <h2 className='error'>{errorMessage}</h2>
     </div>

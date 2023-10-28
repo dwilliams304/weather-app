@@ -5,23 +5,27 @@
   text-align: center;
 }
 
+body{
+  background-image: linear-gradient(to bottom right, rgb(33, 37, 33), rgb(0, 74, 77));
+}
+
 h1{
   font-size: 3rem;
 }
 
 .app-container{
-  border: solid 2px rgb(193, 237, 255);
+  border: solid 2px rgb(151, 255, 156);
   padding: 10rem;
   border-radius: 25px;
+  background-image: linear-gradient(to bottom right, rgb(0, 131, 136), rgb(103, 117, 103));
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.356);
-  background-color: rgb(0, 24, 41);
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 500px;
   max-width: 500px;
-  height: 300px;
-  max-height: 300px;
+  height: 375px;
+  max-height: 375px;
 }
 
 .weather-display{
@@ -34,8 +38,16 @@ h1{
   min-width: 100px;
 }
 
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: auto 0;
+}
+
 .location-input{
-  border: 1px solid black;
+  border: none;
   border-radius: 15px;
   padding: 1rem 5rem;
   text-align: center;
@@ -45,6 +57,19 @@ h1{
     color: rgba(66, 66, 66, 0.747);
     margin: auto;
   }
+}
+
+.random-city {
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
+  margin: 0 auto;
+  border: none;
+  border-radius: 20px;
+  color: rgb(41, 41, 41);
+}
+
+.random-city:hover{
+  cursor: pointer;
 }
 
 .error{

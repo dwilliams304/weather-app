@@ -10,8 +10,15 @@ export const LocationInput = props => {
                     className='location-input'
                     placeholder='Input a city or ZIP code...'
                 /><br/>
+            <label> Fahrenheit?
+                <input 
+                    onChange={props.switchFarenheit}
+                    value={props.farenheit}
+                    type='checkbox'
+                />
+            </label><br/>
             </form>
-            <button className='rand-city' onClick={() => props.randomCity()}>Random City!</button>
+            <button className='random-city' onClick={() => props.randomCity()}>Random City!</button>
         </>
     )
 }

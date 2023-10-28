@@ -20,13 +20,20 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetchData();
     setInputValue('');
+    if(!API_KEY) {
+      setErrorMessage('Please set your API key!');
+      return;
+    }
+    fetchData();
   }
 
   const randomCity = () => {
     let random = Math.floor(Math.random() * CitiesList.length)
-    console.log(CitiesList[random]);
+    if(!API_KEY) {
+      setErrorMessage('Please set your API key!');
+      return;
+    }
     fetchData(CitiesList[random]);
   }
 
@@ -41,17 +48,14 @@ function App() {
       });
   }
 
+  const switchFarenheit = () => {
+    setFahrenheit(!fahrenheit);
+  }
+
 
 
   return (
     <div className='app-container'>
-      <label> Fahrenheit?
-        <input 
-          onChange={() => setFahrenheit(!fahrenheit)}
-          value={fahrenheit}
-          type='checkbox'
-        />
-      </label>
       <WeatherDisplay 
         weatherData={weatherData}
         isFahrenheit={fahrenheit}
@@ -61,6 +65,8 @@ function App() {
         inputValue={inputValue} 
         handleSubmit={handleSubmit}
         randomCity={randomCity}
+        switchFarenheit={switchFarenheit}
+        fahrenheit={fahrenheit}
       />
       <h2 className='error'>{errorMessage}</h2>
     </div>

@@ -1,9 +1,15 @@
-import React from "react";
-
 export const LocationInput = props => {
+
     return(
-        <div>
+        <form onSubmit={props.handleSubmit}>
             <h2>Input your location here!</h2>
-        </div>
+            <input 
+                name='location'
+                onChange={props.handleChange}
+                value={props.inputValue}
+                className='location-input'
+                placeholder='Input a city or ZIP code...'
+            />
+        </form>
     )
 }

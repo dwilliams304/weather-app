@@ -1,7 +1,2 @@
-const URL = '';
-const API_KEY = '';
-
-export default {
-    URL,
-    API_KEY
-}
+export const URL = 'http://api.weatherapi.com/v1/current.json?';
+export const API_KEY = 'YOUR_KEY_HERE';

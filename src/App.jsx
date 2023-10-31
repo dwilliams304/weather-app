@@ -30,6 +30,8 @@ function App() {
 
   const randomCity = () => {
     let random = Math.floor(Math.random() * CitiesList.length)
+    console.log('Import', import.meta.env.VITE_API_KEY);
+    console.log('API_KEY', API_KEY);
     if(!API_KEY) {
       setErrorMessage('Please set your API key!');
       return;
